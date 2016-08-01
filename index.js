@@ -319,4 +319,8 @@ Keycloak.prototype.getAccount = function (token) {
   return this.grantManager.getAccount(token);
 };
 
+Keycloak.prototype.redirectToLogin = function (request) {
+  return !this.config.bearerOnly;
+};
+
 module.exports = Keycloak;
