@@ -40,7 +40,7 @@ module.exports = function (keycloak, adminUrl) {
     if (request.url !== url) {
       return next();
     }
-    request.log.info({url: request.url}, 'Handling admin logout');
+    logger.info({url: request.url}, 'Handling admin logout');
     let data = '';
 
     request.on('data', d => {
