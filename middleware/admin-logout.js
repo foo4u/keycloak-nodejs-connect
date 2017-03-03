@@ -14,6 +14,7 @@
  * the License.
  */
 'use strict';
+const logger = require('pino')();
 
 function AdminLogout (keycloak, url) {
   this._keycloak = keycloak;
@@ -39,7 +40,7 @@ module.exports = function (keycloak, adminUrl) {
     if (request.url !== url) {
       return next();
     }
-
+    request.log.info({url: request.url}, 'Handling admin logout');
     let data = '';
 
     request.on('data', d => {
@@ -49,6 +50,7 @@ module.exports = function (keycloak, adminUrl) {
     request.on('end', function () {
       let parts = data.split('.');
       let payload = JSON.parse(new Buffer(parts[1], 'base64').toString());
+      logger.info(payload, "Logout payload");
       if (payload.action === 'LOGOUT') {
         let sessionIDs = payload.adapterSessionIds;
         if (!sessionIDs) {
