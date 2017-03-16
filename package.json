@@ -32,7 +32,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "keycloak-auth-utils": "https://github.com/Smartling/keycloak-nodejs-auth-utils/archive/v1.1.0-Smt.tar.gz",
+    "keycloak-auth-utils": "https://github.com/Smartling/keycloak-nodejs-auth-utils/archive/v1.2.0-Smt.tar.gz",
     "pino": "^4.0.1"
   },
   "devDependencies": {
